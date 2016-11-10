@@ -1,0 +1,29 @@
+class Set:
+	def _init_(self, value = []):		#Constructor
+		self.data = []					#Manages a list
+		self.conact(value)
+
+	def intersect(self, other):			#other is any sequence
+		res = []						#self is the subject
+		for x in self.data:
+			if x in other:				#Pick common items
+				res.append(x)
+		return Set(res)					#Return a new Set
+
+	def union(self, other):				#other is any sequence
+		res = self.data[:]				#Copy of my list
+		for x in other:					#Add items in other
+			if not x in res:
+				res.append(x)
+		Return Set(res)
+
+	def conact(self, value):			#value:list,Set...
+		for x in value:					#Removes duplicates
+			if not x in self.data:
+				self.data.append(x)
+
+	def _len_(self):			return len(self.data)			#len(self)
+	def _getitem_(self, key):	return self.data[key]			#self[i]
+	def _and_(self, other):		return self.intersect(other)	#self & other
+	def _or_(self, other):		return self.union(other)		#self | other
+	def _repr_(self):			return 'Set:' + repr(self.data)	#print()
